@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useEffect } from 'react'
+import React, { useContext, useMemo, useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import SongItem from './SongItem'
 import { useParams } from 'react-router-dom'
@@ -9,10 +9,10 @@ import PodcastItem from './PodcastItem'
 const DisplayAlbum = () => {
 
     const {id} = useParams();
-    const albumData = albumsData[id]
+    const albumData = albumsData[Number(id)];
     const {playWithId} = useContext(PlayerContext)
 
-    const { searchQuery } = useContext(PlayerContext)
+    const { searchQuery, contextMenu, openContextMenu, closeContextMenu } = useContext(PlayerContext)
 
     const searchableData = useMemo(() => [
             ...songsData.map(item => ({ ...item, type: 'song'})),
@@ -25,13 +25,6 @@ const DisplayAlbum = () => {
     )
     
     const isSearching = searchQuery.trim() !== ''
-
-    const [contextMenu, setContextMenu] = useState({
-    visible: false,
-    x: 0,
-    y: 0,
-    songId: null,
-  });
 
   return (
     <>
@@ -52,7 +45,7 @@ const DisplayAlbum = () => {
                                 desc = {item.desc}
                                 id = {item.id}
                                 image = {item.image}
-                                onContextMenu={handleContextMenu}
+                                onContextMenu={openContextMenu}
                                 />
                             )
                         }
@@ -71,6 +64,14 @@ const DisplayAlbum = () => {
                     }
                 )
             }
+            {contextMenu.visible && (
+                <ContextMenu
+                    x={contextMenu.x}
+                    y={contextMenu.y}
+                    songId={contextMenu.songId}
+                    onClose={closeContextMenu}
+                />
+            )}
         </div>
           ) : (
             <p className='text-slate-300'>No songs found for “{searchQuery}”.</p>

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo} from 'react';
 import NavBar from './NavBar';
 import { songsData, albumsData, podcastsData } from '../assets/assets';
 import AlbumItem from './AlbumItem';
@@ -6,6 +6,7 @@ import SongItem from './SongItem';
 import PodcastItem from './PodcastItem';
 import { PlayerContext } from '../context/PlayerContext';
 import ContextMenu from './ContextMenu';
+import { useNavigate } from 'react-router-dom';
 
 const DisplayHome = () => {
     const { searchQuery, contextMenu, openContextMenu, closeContextMenu } = useContext(PlayerContext);
@@ -22,6 +23,7 @@ const DisplayHome = () => {
 
     const isSearching = searchQuery.trim() !== '';
 
+    const navigate = useNavigate()
     return (
         <div className="relative h-full">
             <NavBar />
@@ -77,6 +79,7 @@ const DisplayHome = () => {
                                     desc={item.desc.slice(0, 45) + "..."}
                                     id={item.id}
                                     image={item.image}
+                                    onClick={() => navigate(`/album/${item.id}`)}
                                 />
                             ))}
                         </div>
