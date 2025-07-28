@@ -10,7 +10,7 @@ A fully responsive music streaming web app built with **React.js** and **Tailwin
 - 🔍 **Search Functionality** — Instantly filter songs by title or description.
 - 💬 **Lyrics Display** — Toggle lyrics for currently playing songs.
 - 💚 **Liked Songs** — Like/unlike songs and store them with Local Storage.
-- 🔁 **Loop & Queue** — Seamless playback looping and song queuing.
+- 🔁 **Loop** — Seamless playback looping.
 - 🌗 **Responsive Design** — Works across desktops and mobile screens.
 
 ---
@@ -47,9 +47,6 @@ A fully responsive music streaming web app built with **React.js** and **Tailwin
 
 ### Lyrics
 <img width="1919" height="898" alt="image" src="https://github.com/user-attachments/assets/c2d17b9d-be04-4afb-9322-5e7c4c9acfe8" />
-
-### Queue
-<img width="1919" height="901" alt="image" src="https://github.com/user-attachments/assets/d5093576-95c1-4205-989c-75acbea1c7f0" />
 
 ### Browse
 <img width="1919" height="899" alt="image" src="https://github.com/user-attachments/assets/89c80df1-087d-4b3b-bfcd-6c361d62dada" />
